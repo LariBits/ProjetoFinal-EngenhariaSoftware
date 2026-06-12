@@ -3,10 +3,9 @@
 ## Diagrama de contexto
 
 ```mermaid
-
+---
 config:
   theme: base
-  layout: elk
 ---
 flowchart TB
     %% Bloco central (Sistema)
@@ -43,7 +42,6 @@ flowchart TB
     classDef processo stroke:#818cf8,fill:#eef2ff
     class Cliente,Cozinha,Gerente,Estoque externo
     class p1,p2,p3,p4,p5 processo
----
 ```
 
 ## Diagrama de Caso de Uso
