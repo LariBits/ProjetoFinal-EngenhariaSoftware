@@ -93,10 +93,10 @@ Para otimizar o documento, unificamos a **Atividade 4 (User Stories)** e a **Ati
 
 > ** Matriz MoSCoW: **
 
-![Matriz MoSCoW](../imagens/MatrizMoSCoW.png)
+![Matriz MoSCoW](imagens/MatrizMoSCoW.png)
 
-![Valor vs Esforço](../imagens/valorxesforco.png)
+![Valor vs Esforço](imagens/valorxesforco.png)
 
 ## Planilha/Quadro de Priorização Híbrido (MoSCoW + Valor vs. Esforço)
 
-![Planilha](../imagens/Planilha.jpeg)
+![Planilha](imagens/Planilha.jpeg)
