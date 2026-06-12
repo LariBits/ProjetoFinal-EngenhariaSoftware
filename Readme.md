@@ -1,102 +1,74 @@
-## Projeto Final: Desenvolvimento Ágil com Scrum – Etapa 1
+# SmartBite — Sistema Integrado de Autoatendimento e Gestão de Cozinha
 
-## Larissa S.
-## Talita B.
-## Erika T.
-## Karen E.
+> Projeto Final — Disciplina de Engenharia de Software | Desenvolvimento Ágil com Scrum
 
-### ● Definição dos Papéis 
+<div align="center">
+  <img src="imagens/App.jpeg" alt="SmartBite App" width="720"/>
+</div>
 
-Como a função de _Scrum Master_ foi dispensada para esta atividade pedagógica, o time foi estruturado com foco na liderança do produto e na especificação técnica:
+Uma plataforma híbrida que automatiza a jornada do pedido desde a mesa até a produção: o cliente escaneia o QR Code, monta o pedido pelo celular e a cozinha recebe tudo organizado em tempo real, sem papel e sem ruído.
 
--   **Product Owner (PO):** [Larissa S. Pereira]
-    
-    -   _Responsabilidade:_ Responsável por definir a visão do produto, negociar os requisitos com as partes interessadas e priorizar o Backlog do Produto para garantir o maior valor de entrega.
-        
--   **Time Scrum (Developers / Especialistas em Modelagem):** Erika Toledo, Talita Braz e Karen Evelyn.
-    
-    -   _Responsabilidade:_ Responsáveis pela análise, modelagem de dados, design de interface (UI/UX) e especificação técnica do sistema, transformando a visão do PO em requisitos acionáveis.
+---
 
+## Time
 
-### ● Atividade 2: Escolha do Problema 
+| Papel | Membro |
+|---|---|
+| Product Owner | Larissa S. Pereira |
+| Developer / Modelagem | Erika Toledo |
+| Developer / Modelagem | Talita Braz |
+| Developer / Modelagem | Karen Evelyn |
 
-#### Cliente Fictício
+---
 
-**Rede de Restaurantes "Gourmet Express"**
+## Navegação dos Documentos
 
-#### 🎯 O Problema 
+### Definição e Planejamento
 
-Restaurantes físicos enfrentam um grande gargalo no atendimento durante os horários de pico (almoço e fins de semana), gerando frustração tanto para os clientes quanto para a equipe:
+| Documento | Conteúdo |
+|---|---|
+| [Etapa 1 — Visão do Produto](etapa1-visao-produto.md) | Papéis do time, definição do problema, solução proposta, personas (Lucas, Chef Carlos, Mariana) e backlog inicial com priorização MoSCoW |
 
-1.  **Demora e erros nos pedidos:** Garçons sobrecarregados demoram para atender, anotam pedidos errados e esquecem de avisar a cozinha sobre restrições alimentares.
-    
-2.  **Gargalo na Cozinha:** A cozinha recebe os pedidos em papel ou de forma desorganizada, gerando atrasos e pratos saindo frios.
-    
-3.  **Desperdício de Alimentos e Furo de Estoque:** Pratos continuam disponíveis no cardápio mesmo quando um ingrediente essencial acabou na cozinha, gerando o famoso "desculpe, esse prato acabou", que frustra o cliente após minutos de espera.
-    
+### Execução
 
-#### 💡 A Solução (O Software)
+| Documento | Conteúdo |
+|---|---|
+| [Sprint Review — Sprint 1](SprintReview.md) | Meta da sprint, itens aceitos (US01–US03), itens rejeitados (US04), feedbacks dos stakeholders e adaptações para a Sprint 2 |
 
-**SmartBite: Sistema Integrado de Autoatendimento e Gestão de Cozinha**
+### Modelagem Técnica
 
-Uma plataforma híbrida (focada em Web App para o cliente e Dashboard para o restaurante) que automatiza a jornada do pedido desde a mesa até a produção, sem a necessidade de baixar um app pesado.
+| Documento | Conteúdo |
+|---|---|
+| [Diagramas UML](diagramas.md) | Diagrama de contexto, diagrama de caso de uso, diagrama de classes e diagrama de sequência do fluxo principal (caminho feliz do MVP) |
 
--   **Módulo do Cliente**
-    
-    -   O cliente senta à mesa, escaneia o QR Code e acessa o cardápio digital interativo.
-        
-    -   Ele faz o pedido, adiciona observações (ex: "sem cebola"), acompanha o status de preparo em tempo real e pode fechar/pagar a conta direto pelo celular (dividindo o valor com os amigos de forma automatizada).
-        
--   **Módulo da Cozinha (KDS - Kitchen Display System):**
-    
-    -   Uma tela digital substitui os papéis na cozinha. Os pedidos entram organizados por ordem de chegada, com alertas visuais de tempo de espera e destaque automático para restrições/alergias alimentares.
-        
--   **Módulo Administrativo e Estoque Inteligente:**
-    
-    -   Painel do gerente que atualiza o cardápio em tempo real. Se o estoque de "filé mignon" zerar no sistema, o prato é desativado automaticamente no QR Code dos clientes, evitando vendas frustradas.
+---
 
+## Visão Geral do Sistema
 
-### ● Atividade 3: Criação da Visão do Produto e Personas
+O SmartBite é composto por três módulos integrados:
 
-Para alinhar o design de interface (UI/UX) e o fluxo do sistema, mapeamos as três personas principais que interagem com o ecossistema do **SmartBite**:
+**Módulo do Cliente (Web App via QR Code)**
+O cliente escaneia o código na mesa, visualiza o cardápio digital, monta o pedido com observações e acompanha o status de preparo em tempo real. O fechamento e divisão da conta também são feitos pelo celular.
 
-#### 👤 Persona 1: O Cliente da Mesa
+**Módulo da Cozinha — KDS (Kitchen Display System)**
+Tela digital que substitui os papéis na cozinha. Pedidos chegam organizados por ordem de chegada, com alertas visuais de tempo de espera e destaque automático para restrições e alergias.
 
--   **Nome:** Lucas, 23 anos.
-    
--   **Perfil:** Estudante universitário, focado em praticidade, costuma almoçar com pressa entre as aulas ou sair com amigos no fim de semana.
-    
--   **Necessidade:** Quer sentar, escolher o prato rapidamente, não quer mofar esperando o garçom trazer o cardápio ou a maquininha de cartão, e odeia a confusão de calcular e dividir a conta no final.
-    
+**Módulo Administrativo**
+Painel do gerente para atualizar o cardápio em tempo real, controlar o estoque de insumos e visualizar métricas de faturamento. Quando um ingrediente zera no estoque, o prato é desativado automaticamente no cardápio do cliente.
 
-#### 👤 Persona 2: O Chef de Cozinha
+---
 
--   **Nome:** Chef Carlos, 42 anos.
-    
--   **Perfil:** Profissional experiente, detalhista, trabalha sob alta pressão e ritmo acelerado.
-    
--   **Necessidade:** Precisa receber os pedidos de forma ultraorganizada, clara (sem garranchos de garçom) e com destaque absoluto para restrições e alergias alimentares para evitar erros fatais na cozinha.
-    
+## Status do Projeto
 
-#### 👤 Persona 3: O Gerente do Restaurante
+| Sprint | Meta | Status |
+|---|---|---|
+| Sprint 1 | Caminho feliz do MVP: QR Code → Pedido → KDS | Parcialmente concluída |
+| Sprint 2 | Fechamento de conta, divisão e módulo de estoque | Em planejamento |
 
--   **Nome:** Mariana, 35 anos.
-    
--   **Perfil:** Focada em métricas de eficiência, controle de custos e satisfação do cliente.
-    
--   **Necessidade:** Precisa acompanhar o tempo médio de preparo dos pratos, faturamento do dia e ter autonomia para pausar a venda de um prato instantaneamente se um ingrediente do estoque acabar.
-    
+**Entregas da Sprint 1 validadas:**
+- [US01] Acesso via QR Code e visualização do cardápio
+- [US02] Realização de pedido com observações
+- [US03] Painel da cozinha (KDS) com alertas visuais
 
-### ● Atividade 4 e 5: O Product Backlog Inicial e Priorização
-
-Para otimizar o documento, unificamos a **Atividade 4 (User Stories)** e a **Atividade 5 (Priorização)** em uma tabela de Backlog. A triagem foi feita utilizando a técnica **MoSCoW** para definir o valor de negócio e o que é vital para o software nascer (_MVP - Mínimo Produto Viável_).
-
-> ** Matriz MoSCoW: **
-
-![Matriz MoSCoW](imagens/MatrizMoSCoW.png)
-
-![Valor vs Esforço](imagens/valorxesforco.png)
-
-## Planilha/Quadro de Priorização Híbrido (MoSCoW + Valor vs. Esforço)
-
-![Planilha](imagens/Planilha.jpeg)
+**Pendente (retornou ao backlog):**
+- [US04] Desativação automática de prato por falta de insumo

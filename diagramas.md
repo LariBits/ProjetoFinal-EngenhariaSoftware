@@ -1,8 +1,50 @@
 # Diagramas UML — SmartBite
 
-> Diagramas gerados com base no Readme.md e SprintReview.md do projeto SmartBite.
+## Diagrama de contexto
 
+```mermaid
+
+config:
+  theme: base
+  layout: elk
 ---
+flowchart TB
+    %% Bloco central (Sistema)
+    subgraph Sistema["Sistema SmartBite"]
+      p1["Gerenciar Cardápio Digital"]
+      p2["Gerenciar Pedidos e Carrinho"]
+      p3["Acompanhar Status do Pedido"]
+      p4["Controlar Cozinha (KDS)"]
+      p5["Gerenciar Painel do Gerente"]
+    end
+
+    %% Entidades externas
+    Cliente(["Cliente"])
+    Cozinha(["Painel da Cozinha (KDS)"])
+    Gerente(["Gerente"])
+    Estoque(["Sistema de Estoque"])
+
+    %% Fluxos de dados principais
+    Cliente -->|"Acesso via QR Code / Ver Cardápio / Confirmar Pedido"| p1
+    Cliente -->|"Itens e Observações"| p2
+    p2 -->|"Status do Pedido (Recebido, Em Preparo, Pronto, Entregue)"| Cliente
+
+    p2 -->|"Pedido com Detalhes e Restrições"| Cozinha
+    Cozinha -->|"Status do Preparo / Tempo de Espera"| p3
+
+    Gerente -->|"Consultas de Pedidos e Faturamento"| p5
+    p5 -->|"Relatórios e Alertas"| Gerente
+
+    p5 -->|"Atualização de Pratos / Controle de Estoque"| Estoque
+    Estoque -->|"Disponibilidade de Itens"| p1
+
+    %% Estilo
+    classDef externo stroke:#fb923c,fill:#fff7ed
+    classDef processo stroke:#818cf8,fill:#eef2ff
+    class Cliente,Cozinha,Gerente,Estoque externo
+    class p1,p2,p3,p4,p5 processo
+---
+```
 
 ## Diagrama de Caso de Uso
 
@@ -130,4 +172,80 @@ sequenceDiagram
     BD-->>Backend: Transação confirmada
     Backend-->>App: Pagamento aprovado
     App-->>Cliente: Comprovante e encerramento da sessão da mesa
+```
+## Diagrama de caso de uso
+
+```mermaid
+---
+config:
+  theme: base
+  layout: elk
+---
+classDiagram
+    class Mesa {
+      +numero: int
+      +qrCode: string
+    }
+
+    class Cardapio {
+      +categorias: List~Categoria~
+      +exibir()
+    }
+
+    class Categoria {
+      +nome: string
+      +listarPratos(): List~Prato~
+    }
+
+    class Prato {
+      +nome: string
+      +descricao: string
+      +preco: float
+      +foto: string
+      +ativo: bool
+    }
+
+    class Pedido {
+      +id: int
+      +observacao: string
+      +valorTotal: float
+      +status: StatusPedido
+      +confirmar()
+      +atualizarStatus()
+    }
+
+    class ItemPedido {
+      +quantidade: int
+      +subtotal: float
+    }
+
+    class PainelCozinha {
+      +listarPedidos()
+      +destacarRestricoes()
+      +tempoDeEspera()
+    }
+
+    class PainelGerente {
+      +quantidadePedidos()
+      +faturamentoDia()
+      +controlarEstoque()
+      +ativarDesativarPrato()
+    }
+
+    class StatusPedido {
+      <<enumeration>>
+      Recebido
+      EmPreparo
+      Pronto
+      Entregue
+    }
+
+    %% Relações
+    Mesa "1" --> "1" Pedido : "associa"
+    Pedido "1" --> "many" ItemPedido
+    ItemPedido "1" --> "1" Prato
+    Cardapio "1" --> "many" Categoria
+    Categoria "1" --> "many" Prato
+    PainelCozinha "1" --> "many" Pedido
+    PainelGerente "1" --> "many" Prato
 ```
